@@ -4,33 +4,63 @@
  * To compile with -lfreeglut -lglu32 -lopengl32
  */
 //#include <windows.h>  // for MS Windows
+using namespace std;
+
 #include <GL/glut.h>  // GLUT, include glu.h and gl.h
+#include <thread>
+#include <iostream>
+#include "World.h"
 
-/* Handler for window-repaint event. Call back when the window first appears and
-   whenever the window needs to be re-painted. */
-void display() {
-   glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Set background color to black and opaque
-   glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer (background)
+World world;
 
-   // Draw a Red 1x1 Square centered at origin
-   glBegin(GL_QUADS);              // Each set of 4 vertices form a quad
+void square() {
+    glBegin(GL_QUADS);              // Each set of 4 vertices form a quad
       glColor3f(1.0f, 0.0f, 0.0f); // Red
       glVertex2f(-0.5f, -0.5f);    // x, y
       glVertex2f( 0.5f, -0.5f);
       glVertex2f( 0.5f,  0.5f);
       glVertex2f(-0.5f,  0.5f);
-   glEnd();
-
-   glFlush();  // Render now
+    glEnd();
 }
 
-/* Main function: GLUT runs as a console application starting at main()  */
+
+void render() {
+
+    glClearColor(0.0f, 0.0f, 1.0f, 1.0f); // Set background color to black and opaque
+    glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer (background)
+
+    world.draw();
+
+    //square();
+
+    //glFlush();
+    glutSwapBuffers();
+}
+
+void initGraphics(int argc, char** argv) {
+    glutInit(&argc, argv);                 // Initialize GLUT
+    glutCreateWindow("OpenGL Stuff"); // Create a window with the given title
+    glutInitWindowSize(1320, 1320);   // Set the window's initial width & height
+    glutInitWindowPosition(150, 50); // Position the window's initial top-left corner
+    glutDisplayFunc(render); // Register display callback handler for window re-paint
+
+    glutIdleFunc(render);
+
+    glutMainLoop();
+}
+
+void processingLoop() {
+    world.addBarrier(new Barrier(-1,-1,1,1));
+        world.addBarrier(new Barrier(0,0,1,1));
+    while(true) {
+
+    }
+}
+
 int main(int argc, char** argv) {
-   glutInit(&argc, argv);                 // Initialize GLUT
-   glutCreateWindow("OpenGL Setup Test"); // Create a window with the given title
-   glutInitWindowSize(320, 320);   // Set the window's initial width & height
-   glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
-   glutDisplayFunc(display); // Register display callback handler for window re-paint
-   glutMainLoop();           // Enter the event-processing loop
-   return 0;
+    thread t1(initGraphics, argc, argv);
+    thread t2(processingLoop);
+    t1.join();
+    t2.join();
+    return 0;
 }
