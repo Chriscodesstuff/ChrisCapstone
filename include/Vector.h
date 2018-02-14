@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Tuple.h"
 
 //TODO: Fix Low Precision, finish comments

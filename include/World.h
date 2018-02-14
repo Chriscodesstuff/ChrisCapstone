@@ -1,10 +1,12 @@
 #pragma once
 
 #include "Barrier.h"
+#include "Camera.h"
 
 class Barrier;
 
-/** A container for actors and Barriers which alows simple interaction between the two.
+/** A container for actors and Barriers which alows simple interaction between
+ * the two.
  * @author Chris Muller
  */
 class World {

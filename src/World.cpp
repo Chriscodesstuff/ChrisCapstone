@@ -1,6 +1,4 @@
 #include "World.h"
-#include "Barrier.h"
-
 
 World::World() {
     actors = new double[ARRAY_CHUNK];

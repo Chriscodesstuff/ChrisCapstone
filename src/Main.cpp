@@ -13,7 +13,7 @@ using namespace std;
 
 World world;
 
-void square() {
+/*void square() {
     glBegin(GL_QUADS);              // Each set of 4 vertices form a quad
       glColor3f(1.0f, 0.0f, 0.0f); // Red
       glVertex2f(-0.5f, -0.5f);    // x, y
@@ -21,6 +21,27 @@ void square() {
       glVertex2f( 0.5f,  0.5f);
       glVertex2f(-0.5f,  0.5f);
     glEnd();
+}*/
+
+void resize(GLint w, int h) {
+    //(*world.getCamera()).resize();
+   // Compute aspect ratio of the new window
+   if (height == 0) height = 1;                // To prevent divide by 0
+   GLfloat aspect = (GLfloat)width / (GLfloat)height;
+
+   // Set the viewport to cover the new window
+   glViewport(0, 0, width, height);
+
+   // Set the aspect ratio of the clipping area to match the viewport
+   glMatrixMode(GL_PROJECTION);  // To operate on the Projection matrix
+   glLoadIdentity();             // Reset the projection matrix
+   if (width >= height) {
+     // aspect >= 1, set the height from -1 to 1, with larger width
+      gluOrtho2D(-1.0 * aspect, 1.0 * aspect, -1.0, 1.0);
+   } else {
+      // aspect < 1, set the width to -1 to 1, with larger height
+     gluOrtho2D(-1.0, 1.0, -1.0 / aspect, 1.0 / aspect);
+   }
 }
 
 
@@ -40,9 +61,10 @@ void render() {
 void initGraphics(int argc, char** argv) {
     glutInit(&argc, argv);                 // Initialize GLUT
     glutCreateWindow("OpenGL Stuff"); // Create a window with the given title
-    glutInitWindowSize(1320, 1320);   // Set the window's initial width & height
-    glutInitWindowPosition(150, 50); // Position the window's initial top-left corner
+    glutInitWindowSize(1320, 620);   // Set the window's initial width & height
+    glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
     glutDisplayFunc(render); // Register display callback handler for window re-paint
+    glutReshapeFunc(resize);
 
     glutIdleFunc(render);
 
@@ -51,7 +73,7 @@ void initGraphics(int argc, char** argv) {
 
 void processingLoop() {
     world.addBarrier(new Barrier(-1,-1,1,1));
-        world.addBarrier(new Barrier(0,0,1,1));
+    world.addBarrier(new Barrier(0,0,1,1));
     while(true) {
 
     }

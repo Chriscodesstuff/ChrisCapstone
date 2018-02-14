@@ -1,3 +1,5 @@
+#pragma once
+
 /** Stores 2 Related Values.
  * @author Chris Muller
  */
