@@ -51,6 +51,10 @@ Barrier* World::getBarrier(int i) {
     return barriers[i];
 }
 
+Barrier** World::getBarriers() {
+    return barriers;
+}
+
 int World::getBarriersSize() {
     return barriersSize;
 }

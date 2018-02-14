@@ -17,7 +17,7 @@ private:
     Tuple* pDim;
     Vector* pVel;
     World* pParent;
-    const static double SPEED = 10;
+    double SPEED = 10;
 
 public:
 
@@ -25,6 +25,8 @@ public:
      *
      */
     Actor();
+
+    Actor(double x, double y);
 
     /** Constructor.
      * @param x Center X position
@@ -35,10 +37,13 @@ public:
     Actor(double x, double y, double w, double h);
 
 
-    void setVelocity(Tuple* t);
+    void setVelocity(Vector* t);
 
 
-    Tuple* getVelocity();
+    Vector* getVelocity();
+
+
+    void setParent(World* w);
 
 
     void move();
@@ -46,4 +51,4 @@ public:
 
     void draw();
 
-}
+};

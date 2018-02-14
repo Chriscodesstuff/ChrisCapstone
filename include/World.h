@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Barrier.h"
-#include "Camera.h"
 
 class Barrier;
 
@@ -53,6 +52,11 @@ public:
      * @return Barrier
      */
     Barrier* getBarrier(int i);
+
+    /**
+     *
+     */
+    Barrier** getBarriers();
 
     /** Gets the Number of Barriers in the World.
      * @return Number of Barriers

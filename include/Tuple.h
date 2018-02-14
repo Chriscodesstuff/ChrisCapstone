@@ -1,6 +1,6 @@
 #pragma once
 
-/** Stores 2 Related Values.
+/** Stores 2 Related Values. TODO: switch returns to pointers
  * @author Chris Muller
  */
 class Tuple {
@@ -62,21 +62,21 @@ class Tuple {
      *@param v Addend Tuple
      *@return Sum of Tuples
      */
-    Tuple operator+(Tuple v);
+    Tuple* operator+(Tuple* v);
 
     /** Tuple Subtraction.
      * Returns the difference of a given Tuple subtracted from this.
      *@param v Subtrahend Tuple
      *@return Difference of Tuples
      */
-    Tuple operator-(Tuple v);
+    Tuple* operator-(Tuple* v);
 
     /** Tuple Scalar Multiplication.
      * Multiplies both values of a Tuple by a factor
      *@param f Factor
      *@return Product Tuple
      */
-    Tuple operator*(double f);
+    Tuple* operator*(double f);
 
     /** Tuple Equality.
      * Determines if the corresponding values of a given Tuple and This are
@@ -84,7 +84,7 @@ class Tuple {
      *@param v Tuple
      *@return True if corresponding values are equal
      */
-    bool operator==(Tuple v);
+    bool operator==(Tuple* v);
 
 //Methods-----------------------------------------------------------------------
 

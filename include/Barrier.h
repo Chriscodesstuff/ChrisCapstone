@@ -41,7 +41,7 @@ public:
      * @param &p Reference to Point
      * @return True if point is within bounds
      */
-    bool contains(Tuple &p);
+    bool contains(Tuple* p);
 
     /** Draws the barrier's texture.
      * If debug is true, also draws hitbox in red

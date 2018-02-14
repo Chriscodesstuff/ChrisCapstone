@@ -23,6 +23,7 @@ World world;
     glEnd();
 }*/
 
+/*
 void resize(GLint w, int h) {
     //(*world.getCamera()).resize();
    // Compute aspect ratio of the new window
@@ -43,7 +44,7 @@ void resize(GLint w, int h) {
      gluOrtho2D(-1.0, 1.0, -1.0 / aspect, 1.0 / aspect);
    }
 }
-
+*/
 
 void render() {
 
@@ -64,7 +65,7 @@ void initGraphics(int argc, char** argv) {
     glutInitWindowSize(1320, 620);   // Set the window's initial width & height
     glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
     glutDisplayFunc(render); // Register display callback handler for window re-paint
-    glutReshapeFunc(resize);
+    //glutReshapeFunc(resize);
 
     glutIdleFunc(render);
 

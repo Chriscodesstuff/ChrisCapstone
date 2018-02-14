@@ -14,11 +14,11 @@ void Barrier::setParent(World* w) {
     pParent = w;
 }
 
-bool Barrier::contains(Tuple &p) {
-    return ((*pPos).getX() <= p.getX() &&
-            (*pPos).getX() + (*pDim).getX() >= p.getX() &&
-            (*pPos).getY() <= p.getY() &&
-            (*pPos).getY() + (*pDim).getY() >= p.getY()
+bool Barrier::contains(Tuple* p) {
+    return ((*pPos).getX() <= (*p).getX() &&
+            (*pPos).getX() + (*pDim).getX() >= (*p).getX() &&
+            (*pPos).getY() <= (*p).getY() &&
+            (*pPos).getY() + (*pDim).getY() >= (*p).getY()
     );
 }
 

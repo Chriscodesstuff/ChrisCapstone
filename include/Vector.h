@@ -47,19 +47,19 @@ class Vector:public Tuple {
      *@param m New Magnitude
      *@return Vector at new Magnitude
      */
-    Vector atMagnitude(double m);
+    Vector* atMagnitude(double m);
 
     /** Returns a new Vector at the same Magnitude with a new Angle
      *
      *@param a New Angle in Radians
      *@return Vector at new Angle
      */
-    Vector atAngle(double a);
+    Vector* atAngle(double a);
 
     /** Returns Vector of the Dot Product of 2 vectors
      * Return a new Vector at the angle of the given vector with a Magnitude
      * equal to the component of This which is at the same angle as the given
      * vector
      */
-    Vector dotProd(Vector v);
+    Vector* dotProd(Vector* v);
 };
